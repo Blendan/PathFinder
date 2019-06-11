@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 1189072445}
   - component: {fileID: 1189072444}
   m_Layer: 5
-  m_Name: Menue
+  m_Name: Menu
   m_TagString: pause
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,7 +1214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menue
+  m_Text: Menu
 --- !u!222 &2103827620
 CanvasRenderer:
   m_ObjectHideFlags: 0
