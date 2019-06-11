@@ -42,7 +42,7 @@ public class Generator : MonoBehaviour
         random = new System.Random();
         placer = GetComponent<Placer>();
 
-        placer.fade = corners*0.4f + 1;
+        placer.fade = corners*0.4f + 1f + 0.4f;
 
         Generate();
     }
