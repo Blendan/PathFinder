@@ -7,10 +7,16 @@ public class Movment : MonoBehaviour
 {
     private Placer placer;
 
+    private bool paused = false;
+
+    private GameObject[] pauseObjs;
+
     private int errors = 0;
     // Start is called before the first frame update
     void Start()
     {
+        pauseObjs = GameObject.FindGameObjectsWithTag("pause");
+        SetPauseActive(false);
         placer = GetComponent<Placer>();
     }
 
@@ -19,23 +25,53 @@ public class Movment : MonoBehaviour
     {
         if (placer.ToFade < 0)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (!paused)
             {
-                Move(0, 1);
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                Move(0, -1);
-            }
-            else if (Input.GetKeyDown(KeyCode.A))
-            {
-                Move(-1, 0);
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                Move(1, 0);
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    Move(0, 1);
+                }
+                else if (Input.GetKeyDown(KeyCode.S))
+                {
+                    Move(0, -1);
+                }
+                else if (Input.GetKeyDown(KeyCode.A))
+                {
+                    Move(-1, 0);
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    Move(1, 0);
+                }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
+    }
+
+    private void SetPauseActive(bool b)
+    {
+        foreach(GameObject obj in pauseObjs)
+        {
+            obj.SetActive(b);
+        }
+    }
+
+    public void Pause()
+    {
+        if(paused)
+        {
+            SetPauseActive(false);
+        }
+        else
+        {
+            SetPauseActive(true);
+        }
+
+        paused = !paused;
     }
 
     private void Move(int x, int y)
